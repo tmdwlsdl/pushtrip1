@@ -1,0 +1,16 @@
+package com.abc.pushtrip.trade.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.abc.pushtrip.trade.vo.TradeForumVO;
+
+@Mapper
+public interface TradeForumDAO {
+	
+		public int tradeForumInsert(TradeForumVO tfvo);
+		public List<TradeForumVO> tradeForumSelectAll(TradeForumVO tfvo);
+		public List<TradeForumVO> tradeForumUpdate(TradeForumVO tfvo);
+		public List<TradeForumVO> tradeForumDelete(TradeForumVO tfvo);
+}
