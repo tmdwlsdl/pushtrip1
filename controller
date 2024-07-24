@@ -1,0 +1,53 @@
+package com.abc.pushtrip.trade.controller;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.abc.pushtrip.trade.service.TradeForumService;
+import com.abc.pushtrip.trade.vo.TradeForumVO;
+
+@Controller
+public class TradeForumController {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	public TradeForumService tradeForumService;
+	
+	@GetMapping("/insert")
+	public String tradeForumInsert(Model model){
+		
+		return "insert";
+	}
+	
+	@GetMapping("/selectAll")
+	public String tradeForumSelectAll(TradeForumVO tfvo, Model model) {
+	
+		List<TradeForumVO> tList = tradeForumService.tradeForumSelectAll(tfvo);
+		logger.info("tList : " + tList);
+		
+		model.addAttribute("tList", tList);
+		
+		return "select";
+	}
+	
+	@GetMapping("/update")
+	public String tradeForumUpdate(TradeForumVO tfvo, Model model) {
+		
+		return "update";
+	}
+	
+	@GetMapping("delete")
+	public String tradeForumDelete(TradeForumVO tfvo, Model model) {
+		
+		return "delete";
+		
+		
+	}
+}
